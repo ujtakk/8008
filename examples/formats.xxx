@@ -1,0 +1,72 @@
+### ISA Definition
+. examples/isa.xxx
+
+### Aliases
+= ddd           0b000
+= sss           0b000
+= bb_bbb_bbb    0b00_000_000
+= bb_bbb_bbb2   0b00_000_000
+= xx            0b00
+= bbb_bbb3      0b000_000
+= cc            0b00
+= aaa           0b000
+= mmm           0b000
+= rr            0b00
+
+### Index Register Instructions
+Lrr         ddd         sss
+LrM_left    ddd         LrM_right
+LMr         sss
+LrI_left    ddd         LrI_right   bb_bbb_bbb
+LMI         bb_bbb_bbb
+INr_left    ddd         INr_right
+DCr_left    ddd         DCr_right
+
+### Accumulator Group Instructions
+ADr         sss
+ADM
+ADI         bb_bbb_bbb
+ACr         sss
+ACM
+ACI         bb_bbb_bbb
+SUr         sss
+SUM
+SUI         bb_bbb_bbb
+SBr         sss
+SBM
+SBI         bb_bbb_bbb
+NDr         sss
+NDM
+NDI         bb_bbb_bbb
+XRr         sss
+XRM
+XRI         bb_bbb_bbb
+ORr         sss
+ORM
+ORI         bb_bbb_bbb
+CPr         sss
+CPM
+CPI         bb_bbb_bbb
+RLC
+RRC
+RAL
+RAR
+
+### Program Counter and Stack Control Instructions
+JMP         bb_bbb_bbb2 xx          bbb_bbb3
+JFc_left    cc          JFc_right   bb_bbb_bbb2 xx          bbb_bbb3
+JTc_left    cc          JTc_right   bb_bbb_bbb2 xx          bbb_bbb3
+CAL         bb_bbb_bbb2 xx          bbb_bbb3
+CFc_left    cc          CFc_right   bb_bbb_bbb2 xx          bbb_bbb3
+CTc_left    cc          CTc_right   bb_bbb_bbb2 xx          bbb_bbb3
+RET
+RFc_left    cc          RFc_right
+RTc_left    cc          RTc_right
+RST_left    aaa         RST_right
+
+### Input/Output Instructions
+INP_left    mmm         INP_right
+OUT_left    rr          mmm         OUT_right
+
+### Machine Instruction
+HLT

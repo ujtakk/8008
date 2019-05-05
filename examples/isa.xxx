@@ -1,0 +1,209 @@
+################################################################################
+# Load index register r1 with the content of index register r2.
+################################################################################
+= Lrr   0b11
+
+################################################################################
+# Load index register r with the content of memory register M.
+################################################################################
+= LrM_left  0b11
+= LrM_right 0b111
+
+################################################################################
+# Load memory register M with the content of index register r.
+################################################################################
+= LMr   0b11_111
+
+################################################################################
+# Load index register r with data B ... B.
+################################################################################
+= LrI_left  0b00
+= LrI_right 0b110
+
+################################################################################
+# Load memory register M with data B ... B.
+################################################################################
+= LMI   0b00_111_110
+
+################################################################################
+# Increment the content of index register r (r != A).
+################################################################################
+= INr_left  0b00
+= INr_right 0b000
+
+################################################################################
+# Decrement the content of index register r (r != A).
+################################################################################
+= DCr_left  0b00
+= DCr_right 0b001
+
+################################################################################
+# Add the content of index register r, memory register M, or data B ... B
+# to the accumulator. An overflow (carry) sets the carry flip-flop.
+################################################################################
+= ADr   0b10_000
+= ADM   0b10_000_111
+= ADI   0b00_000_100
+
+################################################################################
+# Add the content of index register r, memory register M, or data B ... B
+# to the accumulator with carry. An overflow (carry) sets the carry flip-flop.
+################################################################################
+= ACr   0b10_001
+= ACM   0b10_001_111
+= ACI   0b00_001_100
+
+################################################################################
+# Subtract the content of index register r, memory register M, or data B ... B
+# from the accumulator. An underflow (borrow) sets the carry flip-flop.
+################################################################################
+= SUr   0b10_010
+= SUM   0b10_010_111
+= SUI   0b00_010_100
+
+################################################################################
+# Subtract the content of index register r, memory register M, or data B ... B
+# from the accumulator with borrow. An underflow (borrow) sets the carry flip-flop.
+################################################################################
+= SBr   0b10_011
+= SBM   0b10_011_111
+= SBI   0b00_011_100
+
+################################################################################
+# Compute the logical AND of the content of index register r,
+# memory register M, or data B ... B with the accumulator.
+################################################################################
+= NDr   0b10_100
+= NDM   0b10_100_111
+= NDI   0b00_100_100
+
+################################################################################
+# Compute the EXCLUSIVE OR of the content of index register r,
+# memory register M, or data B ... B with the accumulator.
+################################################################################
+= XRr   0b10_101
+= XRM   0b10_101_111
+= XRI   0b00_101_100
+
+################################################################################
+# Compute the INCLUSIVE OR of the content of index register r,
+# memory register M, or data B ... B with the accumulator.
+################################################################################
+= ORr   0b10_110
+= ORM   0b10_110_111
+= ORI   0b00_110_100
+
+################################################################################
+# Compare the content of index register r, memory register M, or data B ... B
+# with the accumulator. The content of the accumulator is unchanged.
+################################################################################
+= CPr   0b10_111
+= CPM   0b10_111_111
+= CPI   0b00_111_100
+
+################################################################################
+# Rotate the content of the accumulator left.
+################################################################################
+= RLC   0b00_000_010
+
+################################################################################
+# Rotate the content of the accumulator right.
+################################################################################
+= RRC   0b00_001_010
+
+################################################################################
+# Rotate the content of the accumulator left through the carry.
+################################################################################
+= RAL   0b00_010_010
+
+################################################################################
+# Rotate the content of the accumulator right through the carry.
+################################################################################
+= RAR   0b00_011_010
+
+################################################################################
+# Unconditionally jump to memory address B3 ... B3 B2 ... B2.
+################################################################################
+= JMP   0b01_000_100
+
+################################################################################
+# Jump to memory address B3 ... B3 B2 ... B2 if the condition flip-flop c
+# is false. Otherwise, execute the next instruction in sequence.
+################################################################################
+= JFc_left  0b01_0
+= JFc_right 0b000
+
+################################################################################
+# Jump to memory address B3 ... B3 B2 ... B2 if the condition flip-flop c
+# is true. Otherwise, execute the next instruction in sequence.
+################################################################################
+= JTc_left  0b01_1
+= JTc_right 0b000
+
+################################################################################
+# Unconditionally call the subroutine at memory address B3 ... B3 B2 ... B2.
+# Save the current address (up one level in the stack).
+################################################################################
+= CAL   0b01_000_110
+
+################################################################################
+# Call the subroutine at memory address B3 ... B3 B2 ... B2 if the condition
+# flip-flop c is false, and save the current address (up one level in the stack).
+# Otherwise, execute the next instruction in sequence.
+################################################################################
+= CFc_left  0b01_0
+= CFc_right 0b010
+
+################################################################################
+# Call the subroutine at memory address B3 ... B3 B2 ... B2 if the condition
+# flip-flop c is true, and save the current address (up one level in the stack).
+# Otherwise, execute the next instruction in sequence.
+################################################################################
+= CTc_left  0b01_1
+= CTc_right 0b010
+
+################################################################################
+# Unconditionally return (down one level in the stack).
+################################################################################
+= RET   0b00_000_111
+
+################################################################################
+# Return (down one level in the stack) if the condition flip-flop c is false.
+# Otherwise, execute the next instruction in sequence.
+################################################################################
+= RFc_left  0b00_0
+= RFc_right 0b011
+
+################################################################################
+# Return (down one level in the stack) if the condition flip-flop c is true.
+# Otherwise, execute the next instruction in sequence.
+################################################################################
+= RTc_left  0b00_1
+= RTc_right 0b011
+
+################################################################################
+# Call the subroutine at memory address AAA000 (up one level in the stack).
+################################################################################
+= RST_left  0b00
+= RST_right 0b101
+
+################################################################################
+# Read the content of the selected input port (MMM) into the accumulator.
+################################################################################
+= INP_left  0b01_00
+= INP_right 0b1
+
+################################################################################
+# Write the content of the accumulator into the selected output port
+# (RRMMM, RR != 0).
+################################################################################
+= OUT_left  0b01
+= OUT_right 0b1
+
+################################################################################
+# Enter the STOPPED state and remain there until interrupted.
+################################################################################
+= HLT   0b00_000_001
+= HLT0  0b00_000_000
+= HLT1  0b11_111_111
+

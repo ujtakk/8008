@@ -58,18 +58,20 @@ func main() {
 		reader := bufio.NewReader(src_file)
 		show(reader)
 		return
-	}
-
-	var dst_file *os.File
-	if opt.dst == "" {
-		dst_file = os.Stdout
 	} else {
-		dst_file, _ = os.Create(opt.dst)
+		panic("Only dry mode is supported currently")
 	}
-	defer dst_file.Close()
 
-	cpu := NewCPU()
-	cpu.LoadROM(src_file)
-	cpu.Run()
-	cpu.SaveRAM(dst_file)
+	// var dst_file *os.File
+	// if opt.dst == "" {
+	// 	dst_file = os.Stdout
+	// } else {
+	// 	dst_file, _ = os.Create(opt.dst)
+	// }
+	// defer dst_file.Close()
+	//
+	// cpu := NewCPU()
+	// cpu.LoadROM(src_file)
+	// cpu.Run()
+	// cpu.SaveRAM(dst_file)
 }

@@ -2,8 +2,8 @@
 . examples/isa.xxx
 
 ### Aliases
-= ddd           0b000
-= sss           0b000
+= ddd           0b001
+= sss           0b001
 = bb_bbb_bbb    0b00_000_000
 = bb_bbb_bbb2   0b00_000_000
 = xx            0b00
@@ -11,7 +11,7 @@
 = cc            0b00
 = aaa           0b000
 = mmm           0b000
-= rr            0b00
+= rr            0b01
 
 ### Index Register Instructions
 Lrr         ddd         sss
